@@ -12,21 +12,21 @@
 
 <script setup lang="ts">
 import { fetchPeople } from '@/api/apiFetchPeople'
+import type { EntityAPIResult, APIResult } from '@/api/types'
 import { computed, onMounted, ref } from 'vue'
 
-const result = ref(null)
-const characters = ref([])
+const result = ref<APIResult | null>(null)
+const characters = ref<EntityAPIResult[]>([])
 const total = ref(0)
 
 const pages = computed(() => Math.ceil(total.value / 10))
 
 onMounted(async () => {
-  fetchPeople()
+  fetchPeople({})
     .then((res) => res.json())
-    .then((data) => {
+    .then((data: APIResult) => {
       result.value = data
-      console.log(data)
-      characters.value = data?.results
+      characters.value = data.results
       total.value = data.count
     })
 })

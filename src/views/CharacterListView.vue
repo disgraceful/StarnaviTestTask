@@ -1,9 +1,14 @@
 <template>
   <h1 class="text-2xl text-red-500">Characters:</h1>
   <div v-if="characters">
-    <p v-for="char in characters" :key="char.id" class="text-xl">
+    <router-link
+      v-for="char in characters"
+      :key="char.id"
+      class="text-xl flex"
+      :to="{ name: 'character', params: { id: char.id } }"
+    >
       {{ char.name }}
-    </p>
+    </router-link>
   </div>
 
   <p>Total: {{ total }}</p>

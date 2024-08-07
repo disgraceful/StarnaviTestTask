@@ -1,6 +1,8 @@
+
 type EntityAPIResult = {
-  id: string
-  name: string
+  id: string;
+  name: string;
+  title?:string;
   [key: string]: any
 }
 

@@ -27,13 +27,9 @@ const total = ref(0)
 const pages = computed(() => Math.ceil(total.value / 10))
 
 onMounted(async () => {
-  fetchPeople({})
-    .then((res) => res.json())
-    .then((data: APIResult) => {
-      result.value = data
-      characters.value = data.results
-      total.value = data.count
-    })
+  result.value = await fetchPeople({})
+  characters.value = result.value!.results
+  total.value = result.value!.count
 })
 </script>
 

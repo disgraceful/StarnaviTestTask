@@ -33,7 +33,6 @@ const route = useRoute()
 const { layout } = useLayout()
 const { createNode } = useNode()
 
-
 const nodes = ref<Node[]>([])
 const edges = ref<Edge[]>([])
 

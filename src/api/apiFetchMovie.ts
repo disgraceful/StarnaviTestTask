@@ -1,6 +1,8 @@
-const api = 'https://sw-api.starnavi.io/'
+import { error } from 'console'
+import axios from './axios'
 
 export function fetchMovie({ id }: { id: number }) {
-  const result = fetch(`${api}/films/${id}`)
-  return result
+  return axios.get(`films/${id}`).catch((error) => {
+    error.toJSON()
+  })
 }

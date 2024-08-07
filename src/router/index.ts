@@ -7,14 +7,19 @@ const router = createRouter({
     {
       path: '/',
       name: 'characters',
-      component: CharacterListView,
+      component: CharacterListView
     },
     {
       path: '/character/:id',
       name: 'character',
-      component: ()=> import('../views/CharacterView.vue'),
+      component: () => import('../views/CharacterView.vue')
     },
-
+    {
+      path: '/error',
+      name: 'error',
+      component: () => import('../views/ErrorView.vue')
+    },
+    { path: '/:catchAll(.*)', redirect: '/error' }
   ]
 })
 

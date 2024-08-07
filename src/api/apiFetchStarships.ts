@@ -1,8 +1,6 @@
-const api = 'https://sw-api.starnavi.io/'
+import axios from './axios'
 
-export function fetchStarships({ id }: { id: number }) {
-    const result = fetch(`${api}/starships/${id}`, {
-       
-    })
-    return result
+export async function fetchStarships({ id }: { id: number }) {
+  const result = await axios.get(`starships/${id}`)
+  return result.data
 }
